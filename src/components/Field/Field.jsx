@@ -7,6 +7,7 @@ function Field(props) {
 
   let startingPoint;
   let mazeWay = [];
+  let arrows = [];
 
   const randomWayHandler = (array) => {
     startingPoint = array[Math.floor((Math.random() * array.length))];
@@ -16,12 +17,28 @@ function Field(props) {
   }
 
   const changeRandomSib = (array) => {
-    while (array.length < 10) {
+    while (array.length < 11) {
       const sibling = startingPoint.siblings[Math.floor((Math.random() * startingPoint.siblings.length))]
-      const newCell = cells.find((cell) => cell.id === sibling)
+      const newCell = cells.find((cell) => cell.id === sibling);
       newCell && array.push(newCell)
+      arrows.push(arrowsHandler(startingPoint.coordinates, newCell.coordinates))
       console.log(mazeWay)
+      console.log(arrows)
       startingPoint = newCell;
+    }
+  }
+
+  const arrowsHandler = (prevCord, currCord) => {
+    if (currCord.x > prevCord.x) {
+      return 'right'
+    } else if (currCord.x < prevCord.x) {
+      return 'left'
+    } else if (currCord.y > prevCord.y) {
+      return 'down'
+    } else if (currCord.y < prevCord.y) {
+      return 'up'
+    } else {
+      throw new Error();
     }
   }
 
@@ -74,20 +91,3 @@ function Field(props) {
 }
 
 export default Field;
-
-
-
-// const changeRandomSib = (cell, array) => {
-
-//   while (array.length < 10) {
-//     const sibling = cell.siblings[Math.floor((Math.random() * cell.siblings.length))]
-//     console.log(Math.floor((Math.random() * cell.siblings.length)))
-//     console.log(`выбранный сосед ${sibling}`)
-//     const newCell = cells.find((cell) => cell.id === sibling)
-//     console.log(newCell)
-//     newCell && array.push(newCell)
-//     startingPoint = newCell;
-//     // console.log(array)
-//   }
-
-// }
