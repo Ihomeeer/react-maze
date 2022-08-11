@@ -1,16 +1,31 @@
 import styles from './Field.module.css';
 import Cell from '../../Cell/Cell';
 import cx from 'classnames';
-import {cells, tipsTop, tipsLeft} from '../../utils/constants';
+import { cells, tipsTop, tipsLeft } from '../../utils/constants';
 
 function Field(props) {
 
+  let startingPoint;
+  let mazeWay = [];
 
-  let Maze = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-  ]
+  const randomWayHandler = (array) => {
+    startingPoint = array[Math.floor((Math.random() * array.length))];
+    console.log(`начало ${startingPoint.id}`)
+    mazeWay.push(startingPoint);
+    changeRandomSib(mazeWay)
+  }
+
+  const changeRandomSib = (array) => {
+    while (array.length < 10) {
+      const sibling = startingPoint.siblings[Math.floor((Math.random() * startingPoint.siblings.length))]
+      const newCell = cells.find((cell) => cell.id === sibling)
+      newCell && array.push(newCell)
+      console.log(mazeWay)
+      startingPoint = newCell;
+    }
+  }
+
+  cells && mazeWay && randomWayHandler(cells)
 
 
   return (
@@ -30,14 +45,14 @@ function Field(props) {
       <div className={styles.mainField}>
 
         <div className={styles.tipsLeft}>
-        {
-          tipsTop &&
-          tipsLeft.map((tip) => {
-            return (
-              <div className={cx(styles.tip, styles.leftTip)} key={tip.data}>{tip.data}</div>
-            )
-          })
-        }
+          {
+            tipsTop &&
+            tipsLeft.map((tip) => {
+              return (
+                <div className={cx(styles.tip, styles.leftTip)} key={tip.data}>{tip.data}</div>
+              )
+            })
+          }
         </div>
         <div className={styles.cellsWrapper}>
           {cells &&
@@ -59,3 +74,20 @@ function Field(props) {
 }
 
 export default Field;
+
+
+
+// const changeRandomSib = (cell, array) => {
+
+//   while (array.length < 10) {
+//     const sibling = cell.siblings[Math.floor((Math.random() * cell.siblings.length))]
+//     console.log(Math.floor((Math.random() * cell.siblings.length)))
+//     console.log(`выбранный сосед ${sibling}`)
+//     const newCell = cells.find((cell) => cell.id === sibling)
+//     console.log(newCell)
+//     newCell && array.push(newCell)
+//     startingPoint = newCell;
+//     // console.log(array)
+//   }
+
+// }
