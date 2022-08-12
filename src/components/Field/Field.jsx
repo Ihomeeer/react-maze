@@ -1,3 +1,4 @@
+// Основное поле. Содержит плитки, разметку лабиринта и стрелки с путем
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
@@ -21,16 +22,19 @@ function Field(props) {
   let mazeWay = [];
   let arrows = [];
 
+  // В зависимостях пропс для перерендера игры при закрытии модалки
   useEffect(() => {
     randomWayHandler(cells)
   }, [props.reRender])
 
+  // Тут задается стартовая точка и собираются массивы точек пути и стрелок
   const randomWayHandler = (array) => {
     startPos = array[Math.floor((Math.random() * array.length))];
     mazeWay.push(startPos);
     changeRandomSib(mazeWay)
   }
 
+  // Сначала набираются массивы, потом все эти дела диспатчатся в хранилище (массив со всеми точками не особо там нужен, но мне показалось правильным поместить его туда, для будущих доработок)
   const changeRandomSib = (array) => {
     while (array.length < 11) {
       const sibling = startPos.siblings[Math.floor((Math.random() * startPos.siblings.length))]
@@ -45,6 +49,7 @@ function Field(props) {
     dispatch(getAllArrowsAction(arrows));
   }
 
+  // Функция для определения того, какая стрелка соответствует конкретному ивенту перемещения в лабиринте
   const arrowsHandler = (prevCord, currCord) => {
     if (currCord.x > prevCord.x) {
       return 'right'

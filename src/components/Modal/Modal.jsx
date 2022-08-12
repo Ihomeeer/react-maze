@@ -18,6 +18,7 @@ const Modal = (props) => {
     state => state.maze
   );
 
+  // При закрытии модалки все очищается, закрывается само модальное окно и дергается стейт для перерендера игрового поля
   const buttonClickHandler = () => {
     dispatch(clrStartingPointAction());
     dispatch(clrFinalPointAction());

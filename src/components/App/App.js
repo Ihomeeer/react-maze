@@ -5,6 +5,7 @@ import Field from '../Field/Field';
 import Modal from '../Modal/Modal';
 
 function App() {
+  // Стейт для перерендера основного окна после закрытия модалки
   const [reRender, setReRender] = useState(false);
 
   return (

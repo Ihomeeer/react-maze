@@ -1,3 +1,4 @@
+// Экшены для управления лаюиринтом
 import {
   CHANGE_STARTING_POINT,
   CLEAR_STARTING_POINT,

@@ -1,3 +1,4 @@
+// Хидер. Тут ничего особо и нет.
 import styles from './Header.module.css';
 
 function Header() {

@@ -1,3 +1,5 @@
+// Тут подключены девтулзы редакса для удобства дебагинга.
+// Если что - ссылка https://github.com/reduxjs/redux-devtools
 import { createStore } from 'redux';
 import rootReducer from './reducers/rootReducer.js';
 

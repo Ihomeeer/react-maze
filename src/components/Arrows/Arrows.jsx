@@ -1,3 +1,4 @@
+// Компонент со стрелками, показывающими путь в лабиринте
 import styles from './Arrows.module.css';
 import { useSelector } from 'react-redux';
 import cx from 'classnames';
