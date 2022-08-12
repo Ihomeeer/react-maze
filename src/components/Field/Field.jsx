@@ -1,6 +1,7 @@
 import styles from './Field.module.css';
-import Cell from '../../Cell/Cell';
 import cx from 'classnames';
+import Cell from '../Cell/Cell';
+import Arrows from '../Arrows/Arrows';
 import { cells, tipsTop, tipsLeft } from '../../utils/constants';
 
 function Field(props) {
@@ -85,7 +86,9 @@ function Field(props) {
         </div>
 
       </div>
-
+      <Arrows
+        arrows={arrows && arrows}
+      />
     </section>
   );
 }
