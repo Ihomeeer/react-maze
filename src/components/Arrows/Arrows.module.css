@@ -1,0 +1,34 @@
+.arrows {
+  width: 100%;
+  height: fit-content;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.arrowItem {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: rgb(174, 137, 204);
+  transition: all .3s;
+}
+
+.arrowItem:hover {
+  background-color: rgb(191, 180, 201);
+}
+
+.arrowDown {
+  transform: rotate(180deg);
+}
+
+.arrowLeft {
+  transform: rotate(270deg);
+}
+
+.arrowRight {
+  transform: rotate(90deg);
+}
