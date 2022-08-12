@@ -11,7 +11,7 @@ import styles from './Field.module.css';
 import cx from 'classnames';
 import Cell from '../Cell/Cell';
 import Arrows from '../Arrows/Arrows';
-import { cells, tipsTop, tipsLeft } from '../../utils/constants';
+import { cells, tipsTop, tipsLeft, stepsCount } from '../../utils/constants';
 
 function Field(props) {
 
@@ -36,7 +36,7 @@ function Field(props) {
 
   // Сначала набираются массивы, потом все эти дела диспатчатся в хранилище (массив со всеми точками не особо там нужен, но мне показалось правильным поместить его туда, для будущих доработок)
   const changeRandomSib = (array) => {
-    while (array.length < 11) {
+    while (array.length < stepsCount + 1) {
       const sibling = startPos.siblings[Math.floor((Math.random() * startPos.siblings.length))]
       const newCell = cells.find((cell) => cell.id === sibling);
       newCell && array.push(newCell)
@@ -44,7 +44,7 @@ function Field(props) {
       startPos = newCell;
     }
     dispatch(chgStartingPointAction(mazeWay[0]));
-    dispatch(chgFinalPointAction(mazeWay[10]));
+    dispatch(chgFinalPointAction(mazeWay[stepsCount]));
     dispatch(getAllPointsAction(mazeWay));
     dispatch(getAllArrowsAction(arrows));
   }

@@ -68,6 +68,9 @@ const tipsLeft = [
   { data: "3" },
 ]
 
+// Количество шагов
+const stepsCount = 10;
+
 // константы для Редакса
 const CHANGE_STARTING_POINT = 'CHANGE_STARTING_POINT';
 const CLEAR_STARTING_POINT = 'CLEAR_STARTING_POINT';
@@ -92,6 +95,7 @@ export {
   cells,
   tipsTop,
   tipsLeft,
+  stepsCount,
   CHANGE_STARTING_POINT,
   CLEAR_STARTING_POINT,
   CHANGE_FINAL_POINT,
