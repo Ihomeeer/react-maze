@@ -17,7 +17,49 @@ function Arrows() {
         allArrows &&
         allArrows.map((arrow) => {
           return (
-            <img src={arrowPath} className={cx(styles.arrowItem, arrow === 'up' ? styles.arrowUp : arrow === 'down' ? styles.arrowDown : arrow === 'left' ? styles.arrowLeft : arrow === 'right' ? styles.arrowRight : '')} alt={'arrow'} key={generateUid()}
+            <img
+              src={arrowPath}
+              className={cx(
+                styles.arrowItem,
+                arrow === 'up'
+                  ?
+                  styles.arrowUp
+                  :
+                  arrow === 'down'
+                    ?
+                    styles.arrowDown
+                    :
+                    arrow === 'left'
+                      ?
+                      styles.arrowLeft
+                      :
+                      arrow === 'right'
+                        ?
+                        styles.arrowRight
+                        :
+                        ''
+              )
+              } alt={
+                `стрелка ${arrow === 'up'
+                  ?
+                  'вверх'
+                  :
+                  arrow === 'down'
+                    ?
+                    'вниз'
+                    :
+                    arrow === 'left'
+                      ?
+                      'влево'
+                      :
+                      arrow === 'right'
+                        ?
+                        'вправо'
+                        :
+                        ''
+                }`
+              }
+              key={generateUid()}
             />
           )
         })
