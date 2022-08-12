@@ -2,9 +2,13 @@
   width: 200px;
   height: 200px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: rgb(174, 137, 204);
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   cursor: pointer;
   transition: all .3s;
@@ -14,9 +18,21 @@
   background-color: rgb(185, 164, 202);
 }
 
-.title {
+.startingCell {
+  background-color: rgb(95, 199, 126);
+}
+
+.startingCell:hover {
+  background-color: rgb(125, 211, 150);
+}
+
+.checkedCell {
+  background-color: rgb(95, 136, 199);
+}
+
+.text {
+  margin: 0;
+  font-size: 40px;
+  line-height: 40px;
   color: white;
-  font-size: 36px;
-  line-height: 36px;
-  text-align: center;
 }

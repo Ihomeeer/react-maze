@@ -6,14 +6,20 @@ import {
   GET_ALL_POINTS,
   CLEAR_ALL_POINTS,
   GET_ALL_ARROWS,
-  CLEAR_ALL_ARROWS
+  CLEAR_ALL_ARROWS,
+  OPEN_MODAL,
+  CLOSE_MODAL,
+  SELECTED_CELL,
+  CLEAR_SELECTED_CELL
 } from '../../../utils/constants';
 
 export const initialMazeState = {
   startingPoint: {},
   finalPoint: {},
   allPoints: [],
-  allArrows: []
+  allArrows: [],
+  modalVisibility: false,
+  selectedCell: {}
 };
 
 export const mazeReducer = (state = initialMazeState, action) => {
@@ -37,27 +43,47 @@ export const mazeReducer = (state = initialMazeState, action) => {
       return {
         ...state,
         finalPoint: {}
-      }
+      };
     case GET_ALL_POINTS:
       return {
         ...state,
         allPoints: action.payload
-      }
+      };
     case CLEAR_ALL_POINTS:
       return {
         ...state,
         allPoints: []
-      }
+      };
     case GET_ALL_ARROWS:
       return {
         ...state,
         allArrows: action.payload
-      }
+      };
     case CLEAR_ALL_ARROWS:
       return {
         ...state,
         allArrows: []
-      }
+      };
+    case OPEN_MODAL:
+      return {
+        ...state,
+        modalVisibility: true
+      };
+    case CLOSE_MODAL:
+      return {
+        ...state,
+        modalVisibility: false
+      };
+    case SELECTED_CELL:
+      return {
+        ...state,
+        selectedCell: action.payload
+      };
+    case CLEAR_SELECTED_CELL:
+      return {
+        ...state,
+        selectedCell: {}
+      };
     default:
       return state;
   }

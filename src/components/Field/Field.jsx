@@ -1,3 +1,11 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  chgStartingPointAction,
+  chgFinalPointAction,
+  getAllPointsAction,
+  getAllArrowsAction,
+} from '../../services/actions/mazeActions/mazeActions';
 import styles from './Field.module.css';
 import cx from 'classnames';
 import Cell from '../Cell/Cell';
@@ -6,27 +14,35 @@ import { cells, tipsTop, tipsLeft } from '../../utils/constants';
 
 function Field(props) {
 
-  let startingPoint;
+  const dispatch = useDispatch();
+
+  // Стартовая точка отсчета, массив точек пути и массив соответствующих пути стрелок
+  let startPos;
   let mazeWay = [];
   let arrows = [];
 
+  useEffect(() => {
+    randomWayHandler(cells)
+  }, [props.reRender])
+
   const randomWayHandler = (array) => {
-    startingPoint = array[Math.floor((Math.random() * array.length))];
-    console.log(`начало ${startingPoint.id}`)
-    mazeWay.push(startingPoint);
+    startPos = array[Math.floor((Math.random() * array.length))];
+    mazeWay.push(startPos);
     changeRandomSib(mazeWay)
   }
 
   const changeRandomSib = (array) => {
     while (array.length < 11) {
-      const sibling = startingPoint.siblings[Math.floor((Math.random() * startingPoint.siblings.length))]
+      const sibling = startPos.siblings[Math.floor((Math.random() * startPos.siblings.length))]
       const newCell = cells.find((cell) => cell.id === sibling);
       newCell && array.push(newCell)
-      arrows.push(arrowsHandler(startingPoint.coordinates, newCell.coordinates))
-      console.log(mazeWay)
-      console.log(arrows)
-      startingPoint = newCell;
+      arrows.push(arrowsHandler(startPos.coordinates, newCell.coordinates))
+      startPos = newCell;
     }
+    dispatch(chgStartingPointAction(mazeWay[0]));
+    dispatch(chgFinalPointAction(mazeWay[10]));
+    dispatch(getAllPointsAction(mazeWay));
+    dispatch(getAllArrowsAction(arrows));
   }
 
   const arrowsHandler = (prevCord, currCord) => {
@@ -43,9 +59,6 @@ function Field(props) {
     }
   }
 
-  cells && mazeWay && randomWayHandler(cells)
-
-
   return (
     <section className={styles.field}>
 
@@ -61,7 +74,6 @@ function Field(props) {
       </div>
 
       <div className={styles.mainField}>
-
         <div className={styles.tipsLeft}>
           {
             tipsTop &&
@@ -78,17 +90,16 @@ function Field(props) {
               return (
                 <Cell className={styles.cell}
                   key={cell.id}
-                  data={cell.id}
+                  data={cell}
                 />
               )
             })
           }
         </div>
-
       </div>
-      <Arrows
-        arrows={arrows && arrows}
-      />
+
+      <Arrows />
+
     </section>
   );
 }

@@ -6,7 +6,11 @@ import {
   GET_ALL_POINTS,
   CLEAR_ALL_POINTS,
   GET_ALL_ARROWS,
-  CLEAR_ALL_ARROWS
+  CLEAR_ALL_ARROWS,
+  OPEN_MODAL,
+  CLOSE_MODAL,
+  SELECTED_CELL,
+  CLEAR_SELECTED_CELL
 } from '../../../utils/constants';
 
 
@@ -59,5 +63,30 @@ export const getAllArrowsAction = (payload) => {
 export const clearAllArrowsAction = () => {
   return {
     type: CLEAR_ALL_ARROWS
+  }
+};
+
+export const openModalAction = () => {
+  return {
+    type: OPEN_MODAL
+  }
+};
+
+export const closeModalAction = () => {
+  return {
+    type: CLOSE_MODAL
+  }
+};
+
+export const selectCellAction = (payload) => {
+  return {
+    type: SELECTED_CELL,
+    payload: payload
+  }
+};
+
+export const clrSelectCellAction = () => {
+  return {
+    type: CLEAR_SELECTED_CELL
   }
 };

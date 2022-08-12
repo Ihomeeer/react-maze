@@ -1,0 +1,62 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.678);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.general {
+  width: fit-content;
+  height: auto;
+  padding: 50px;
+  height: fit-content;
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  background: #f7f5f5;
+}
+
+.text {
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 500;
+  font-style: normal;
+  text-align: left;
+}
+
+.textSuccess {
+  color: rgb(95, 235, 125);
+}
+
+.textFailure {
+  color: rgb(236, 103, 99);
+}
+
+.restartButton {
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 36px;
+  line-height: 36px;
+  font-weight: 500;
+  background-color: rgb(174, 137, 204);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  transition: all .3s;
+  color: #f7f5f5;
+}
+
+.restartButton:hover {
+  background-color: rgb(185, 164, 202);
+}
