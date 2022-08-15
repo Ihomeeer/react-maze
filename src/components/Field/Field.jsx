@@ -77,33 +77,37 @@ function Field(props) {
           })
         }
       </div>
+      <div className={styles.mazeWrapper}>
+        <div className={styles.mainField}>
+          <div className={styles.tipsLeft}>
+            {
+              tipsTop &&
+              tipsLeft.map((tip) => {
+                return (
+                  <div className={cx(styles.tip, styles.leftTip)} key={tip.data}>{tip.data}</div>
+                )
+              })
+            }
+          </div>
+          <div className={styles.cellsWrapper}>
+            {cells &&
+              cells.map((cell) => {
+                return (
+                  <Cell className={styles.cell}
+                    key={cell.id}
+                    data={cell}
+                  />
+                )
+              })
+            }
+          </div>
+        </div>
 
-      <div className={styles.mainField}>
-        <div className={styles.tipsLeft}>
-          {
-            tipsTop &&
-            tipsLeft.map((tip) => {
-              return (
-                <div className={cx(styles.tip, styles.leftTip)} key={tip.data}>{tip.data}</div>
-              )
-            })
-          }
-        </div>
-        <div className={styles.cellsWrapper}>
-          {cells &&
-            cells.map((cell) => {
-              return (
-                <Cell className={styles.cell}
-                  key={cell.id}
-                  data={cell}
-                />
-              )
-            })
-          }
-        </div>
+        <Arrows />
+
       </div>
 
-      <Arrows />
+
 
     </section>
   );
