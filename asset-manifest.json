@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-maze/static/css/main.04d5a569.css",
-    "main.js": "/react-maze/static/js/main.1ecd0085.js",
+    "main.css": "/react-maze/static/css/main.d858ba3b.css",
+    "main.js": "/react-maze/static/js/main.0a970196.js",
     "static/js/787.beaa98ac.chunk.js": "/react-maze/static/js/787.beaa98ac.chunk.js",
     "index.html": "/react-maze/index.html",
     "static/media/arrow.svg": "/react-maze/static/media/arrow.7212086d7dc3b4f3649e815fc52fb294.svg",
-    "main.04d5a569.css.map": "/react-maze/static/css/main.04d5a569.css.map",
-    "main.1ecd0085.js.map": "/react-maze/static/js/main.1ecd0085.js.map",
+    "main.d858ba3b.css.map": "/react-maze/static/css/main.d858ba3b.css.map",
+    "main.0a970196.js.map": "/react-maze/static/js/main.0a970196.js.map",
     "787.beaa98ac.chunk.js.map": "/react-maze/static/js/787.beaa98ac.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.04d5a569.css",
-    "static/js/main.1ecd0085.js"
+    "static/css/main.d858ba3b.css",
+    "static/js/main.0a970196.js"
   ]
 }
